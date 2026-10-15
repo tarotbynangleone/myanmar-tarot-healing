@@ -1,0 +1,495 @@
+:root {
+  --bg-deep: #1a0f2e;
+  --bg-mid: #2d1b4e;
+  --bg-card: #3d2a5f;
+  --gold: #d4af37;
+  --gold-light: #f0d568;
+  --text: #f5f0e8;
+  --text-dim: #b0a0c8;
+  --accent: #9b6dff;
+  --danger: #e0556b;
+  --radius: 16px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Noto Serif', serif;
+  background: var(--bg-deep);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.app {
+  max-width: 500px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-mid) 100%);
+}
+
+/* Header */
+.app-header {
+  text-align: center;
+  padding: 2rem 1rem 1rem;
+}
+
+.lotus {
+  font-size: 2.5rem;
+}
+
+.app-header h1 {
+  font-family: 'Cinzel', serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--gold);
+  margin-top: 0.5rem;
+  letter-spacing: 0.05em;
+}
+
+.subtitle {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  margin-top: 0.25rem;
+}
+
+/* Tabs */
+.tab-nav {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.tab {
+  flex: 1;
+  padding: 0.7rem 1rem;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  background: transparent;
+  color: var(--text-dim);
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.tab.active {
+  background: rgba(212, 175, 55, 0.15);
+  color: var(--gold);
+  border-color: var(--gold);
+}
+
+.badge {
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.7rem;
+  font-family: 'Noto Serif', serif;
+  padding: 0.1rem 0.45rem;
+  border-radius: 8px;
+  min-width: 1.2rem;
+  text-align: center;
+}
+
+/* Content */
+.content {
+  flex: 1;
+  padding: 1rem;
+}
+
+/* Card Draw */
+.draw-prompt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding-top: 2rem;
+}
+
+.card-back {
+  width: 180px;
+  height: 260px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--bg-card), var(--bg-mid));
+  border: 2px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s;
+}
+
+.card-back:hover {
+  transform: scale(1.05);
+}
+
+.card-back-pattern {
+  font-size: 3rem;
+  opacity: 0.8;
+}
+
+.draw-hint {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+}
+
+/* Revealed Card */
+.card-reveal {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.tarot-card {
+  width: 100%;
+  background: linear-gradient(135deg, var(--bg-card), var(--bg-mid));
+  border: 2px solid var(--gold);
+  border-radius: var(--radius);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  animation: revealCard 0.5s ease;
+}
+
+@keyframes revealCard {
+  from { opacity: 0; transform: translateY(20px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.card-emoji {
+  font-size: 3.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-name {
+  font-family: 'Cinzel', serif;
+  font-size: 1.3rem;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+}
+
+.card-keywords {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.keyword-chip {
+  background: rgba(155, 109, 255, 0.2);
+  color: var(--text);
+  font-size: 0.75rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 8px;
+  border: 1px solid rgba(155, 109, 255, 0.3);
+}
+
+.keyword-chip.sm {
+  font-size: 0.7rem;
+  padding: 0.15rem 0.5rem;
+}
+
+.card-healing {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+/* Reflection */
+.reflection-section {
+  width: 100%;
+}
+
+.reflection-label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  margin-bottom: 0.4rem;
+}
+
+.reflection-input {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 10px;
+  padding: 0.75rem;
+  color: var(--text);
+  font-family: 'Noto Serif', serif;
+  font-size: 0.9rem;
+  resize: vertical;
+  outline: none;
+}
+
+.reflection-input:focus {
+  border-color: var(--gold);
+}
+
+.reflection-input:disabled {
+  opacity: 0.6;
+}
+
+/* Save */
+.save-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+  align-items: center;
+}
+
+.saved-msg {
+  color: #6dd47e;
+  font-size: 0.9rem;
+}
+
+/* Buttons */
+.btn-primary {
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  color: #1a0f2e;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 10px;
+  font-family: 'Cinzel', serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(212, 175, 55, 0.4);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text-dim);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  padding: 0.75rem 2rem;
+  border-radius: 10px;
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-secondary:hover {
+  color: var(--gold);
+  border-color: var(--gold);
+}
+
+/* History */
+.history-empty {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.empty-icon {
+  font-size: 3rem;
+  opacity: 0.5;
+}
+
+.empty-title {
+  font-family: 'Cinzel', serif;
+  color: var(--gold);
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+}
+
+.empty-hint {
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  max-width: 260px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.history-stats {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.stat {
+  flex: 1;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  border-radius: 12px;
+  padding: 0.75rem 0.5rem;
+}
+
+.stat-value {
+  display: block;
+  font-family: 'Cinzel', serif;
+  font-size: 1.5rem;
+  color: var(--gold);
+}
+
+.stat-label {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.history-entry {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  border-radius: var(--radius);
+  padding: 1rem;
+}
+
+.entry-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.entry-emoji {
+  font-size: 1.8rem;
+}
+
+.entry-meta {
+  flex: 1;
+}
+
+.entry-card-name {
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  color: var(--gold);
+}
+
+.entry-date {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+.btn-delete {
+  background: none;
+  border: 1px solid rgba(224, 85, 107, 0.3);
+  color: var(--danger);
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+
+.btn-delete:hover {
+  background: rgba(224, 85, 107, 0.15);
+}
+
+.entry-keywords {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.entry-healing {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+.entry-reflection {
+  margin-top: 0.75rem;
+  padding: 0.6rem 0.75rem;
+  background: rgba(155, 109, 255, 0.1);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+}
+
+.reflection-tag {
+  font-size: 0.7rem;
+  color: var(--accent);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.entry-reflection p {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--text);
+  font-style: italic;
+}
+
+/* History actions */
+.history-actions {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.btn-clear {
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  font-size: 0.8rem;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0.5rem;
+}
+
+.btn-clear:hover {
+  color: var(--danger);
+}
+
+.confirm-clear {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+
+.btn-danger {
+  background: var(--danger);
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+/* Footer */
+.app-footer {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
